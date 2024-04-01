@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>D&D Dice Roller</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+   <div id="welcome-message">
+    Welcome, brave adventurers, to the Dice Tavern! Select your dice and let fate decide your next move.
+</div>
+
+    </br>
+
+    <div class="dice-selector">
+        <button class="dice-btn" data-dice="4">D4</button>
+        <button class="dice-btn" data-dice="6">D6</button>
+        <button class="dice-btn" data-dice="8">D8</button>
+        <button class="dice-btn" data-dice="10">D10</button>
+        <button class="dice-btn" data-dice="12">D12</button>
+        <button class="dice-btn" data-dice="20">D20</button>
+        <button class="dice-btn" data-dice="100">D100</button>
+    </div>
+    <button id="roll-btn">Roll Dice</button>
+    
+    <!-- Roll result container -->
+<div class="outer-container">
+    <div id="result-container">
+        <div id="roll-text">You rolled a:</div>
+        <div id="roll-number">-</div>
+    </div>
+</div>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
