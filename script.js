@@ -65,4 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
             rollResultElement.classList.add('roll-animation');
         });
     });
+
+    // Clear button functionality
+    document.getElementById('clear-btn').addEventListener('click', () => {
+        selectedDice = []; // Reset selected dice
+        diceButtons.forEach(button => button.classList.remove('dice-btn-selected')); // Deselect all dice buttons
+        resultsContainer.innerHTML = ''; // Clear the results display
+    });
 });
