@@ -187,3 +187,55 @@ body, html {
     cursor: pointer;
 }
 
+/* Ensure body has a minimum height to cover the viewport height */
+body, html {
+    height: 100%;
+}
+
+/* Adjustments for screens smaller than 600px wide */
+@media (max-width: 600px) {
+    /* Adjust font sizes for readability on smaller screens */
+    body, html {
+        font-size: 16px;
+    }
+
+    #welcome-message, .dice-btn, #roll-btn, .modal-content p {
+        font-size: 1em; /* Adjust font size to maintain readability */
+    }
+
+    .dice-selector {
+        flex-direction: column; /* Stack dice buttons vertically */
+        gap: 5px; /* Reduce gap for compact layout */
+    }
+
+    .dice-btn, #roll-btn {
+        padding: 12px; /* Increase padding for better touch interaction */
+        font-size: larger; /* Increase font size for better visibility */
+    }
+
+    .modal-content {
+        width: 90%; /* Increase width to use more screen space */
+        padding: 10px; /* Adjust padding for space efficiency */
+    }
+
+    .result-container {
+        flex-direction: column; /* Stack dice type and roll result vertically */
+    }
+
+    .roll-number, .dice-type {
+        width: auto; /* Adjust width to fit content */
+        height: auto; /* Adjust height to fit content */
+        font-size: 2em; /* Increase font size for visibility */
+    }
+}
+
+/* Additional media query for even smaller devices (less than 400px) */
+@media (max-width: 400px) {
+    .dice-selector {
+        margin: 10px 0; /* Reduce margin for more screen space */
+    }
+
+    .dice-btn, #roll-btn {
+        width: auto; /* Allow buttons to adjust width to content */
+    }
+}
