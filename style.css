@@ -10,18 +10,26 @@ body, html {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin: 20px 0;
+    margin: 20px auto; /* Center the container horizontally */
+    max-width: 640px; /* Set a max-width for the container */
+    flex-wrap: wrap; /* Allows items to wrap in smaller viewports */
+
 }
 
 .dice-btn {
     padding: 10px 20px;
     cursor: pointer;
-    background-color: #6a4f4b; /* Aged wood or leather */
+    background-color: #6a4f4b;
     border: none;
-    color: #f1e4d4; /* Parchment */
+    color: #f1e4d4;
     border-radius: 5px;
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    transition: background-color 0.3s ease;
+    min-width: 50px; /* Ensures buttons have a minimum width */
+    max-width: 100px; /* Ensures buttons don't grow beyond this width */
+    width: auto; /* Adjusts width according to the content */
+    text-align: center; /* Centers the text within the button */
 }
+
 
 .dice-btn:hover, .dice-btn-selected {
     background-color: #94785d; /* Lighter wood/leather for highlight */
@@ -204,8 +212,9 @@ body, html {
     }
 
     .dice-selector {
-        flex-direction: column; /* Stack dice buttons vertically */
-        gap: 5px; /* Reduce gap for compact layout */
+        justify-content: center; /* Reiterate centering for clarity */
+        width: 100%; /* Ensure it's explicitly set if necessary */
+        max-width: none; /* Remove max-width constraint on small screens */
     }
 
     .dice-btn, #roll-btn {
