@@ -17,23 +17,24 @@ body, html {
 }
 
 .dice-btn {
-    padding: 10px 20px;
+    padding: 10px 20px; /* Adjust as necessary */
     cursor: pointer;
-    background-color: #6a4f4b;
-    border: none;
+    background-color: #6a4f4b; /* Original color */
+    border: 2px solid transparent; /* Reserve space for border when not selected */
     color: #f1e4d4;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    min-width: 50px; /* Ensures buttons have a minimum width */
-    max-width: 100px; /* Ensures buttons don't grow beyond this width */
-    width: auto; /* Adjusts width according to the content */
-    text-align: center; /* Centers the text within the button */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    width: auto; /* Adjust width as necessary */
+    text-align: center;
 }
 
 
+
 .dice-btn:hover, .dice-btn-selected {
-    background-color: #94785d; /* Lighter wood/leather for highlight */
+    background-color: #94785d; /* Highlight color */
     color: black;
+    border: 2px solid #ff9800; /* Highlight border, same width as the default state */
 }
 
 #roll-btn {
