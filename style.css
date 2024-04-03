@@ -75,7 +75,9 @@ body, html {
 
 
 #clear-btn:hover {
-    background-color: #BF360C; /* Lighter gray on hover */
+    background-color: #BF360C; 
+    color: #ffffff;
+
 }
 
 
@@ -94,6 +96,9 @@ body, html {
 
 #roll-btn:hover {
     background-color: #8A735E; /* A lighter, more welcoming fire-like color on hover */
+    color: #000000;
+    /* background-color: #ff9800; /* A deep, inviting orange, simulating candlelight */
+    border-color: #000000; /* Lighter border for emphasis */
 }
 
 #result-display {
@@ -348,7 +353,7 @@ body, html {
     justify-content: center;
     align-items: center;
     border-radius: 10px; /* Consistent rounding */
-    border: 3px solid #6a4f4b; /* Consistent border styling */
+    border: 0px solid #6a4f4b; /* Consistent border styling */
 }
 
 .total-number {
