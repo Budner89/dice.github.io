@@ -1,56 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Times New Roman', serif; /* A more classic font choice */
-    background-color: #3e2723; /* A deep wood brown */
-    color: #f1e4d4; /* Parchment-like text color */
+    font-family: 'Merriweather', serif; /* A serif font that's modern yet retains an old-world charm */
+    background-color: #453227; /* Darker, richer wood tone */
+    color: #E4D6C3; /* Soft, parchment-like color for text */
+    text-align: center; /* Center-aligns text for a cleaner look */
 }
+
 
 .dice-selector {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin: 20px auto; /* Center the container horizontally */
-    max-width: 640px; /* Set a max-width for the container */
-    flex-wrap: wrap; /* Allows items to wrap in smaller viewports */
-
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px 0; /* Adds vertical spacing */
 }
 
 .dice-btn {
-    padding: 10px 20px; /* Adjust as necessary */
+    padding: 12px 24px; /* Slightly larger padding for a more touch-friendly design */
     cursor: pointer;
-    background-color: #6a4f4b; /* Original color */
-    border: 2px solid transparent; /* Reserve space for border when not selected */
-    color: #f1e4d4;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    width: auto; /* Adjust width as necessary */
-    text-align: center;
+    background-color: #5D4B3C; /* A warm, leather-like color */
+    border: 2px solid #44342A; /* Slightly darker border for depth */
+    color: #F4EFE6; /* Lighter color for contrast */
+    border-radius: 8px; /* Slightly rounder corners for a modern look */
+    font-size: 18px; /* Larger font size for readability */
+    font-weight: 500; /* Medium font weight for emphasis */
+    transition: all 0.3s ease; /* Smoother transition for hover effects */
 }
 
-
+#result-display, #welcome-message {
+    background-color: rgba(93, 64, 55, 0.85);
+    color: #FBEEDE;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 80%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 .dice-btn:hover, .dice-btn-selected {
-    background-color: #94785d; /* Highlight color */
-    color: black;
-    border: 2px solid #ff9800; /* Highlight border, same width as the default state */
+    background-color: #75655D; /* Lighter shade for interaction */
+    color: #F4EFE6; /* Ensures text color contrasts well with the background */
+    border-color: #A68B79; /* Lighter border for emphasis */
 }
 
-#roll-btn {
+.clear-btn {
+    background-color: #d3d3d3;
     display: block;
-    margin: 20px auto;
+    margin: 10px auto;
     padding: 10px 20px;
     cursor: pointer;
-    background-color: #bf360c; /* Warm, inviting orange, like a fire */
+    display: inline-block;
+}
+
+/* Roll and Clear Button Styles */
+#roll-btn, #clear-btn {
+    background-color: #bdbdbd; /* Warm, inviting */
+    color: #00000;
+    padding: 12px 25px;
+    border-radius: 8px;
     border: none;
-    color: #f1e4d4; /* Contrast against the darker button color */
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px;
+    display: inline-block; /* Side by side display */
+}
+
+
+
+#clear-btn:hover {
+    background-color: #BF360C; /* Lighter gray on hover */
+}
+
+
+#roll-btn {
+    padding: 15px 30px; /* Larger button for easier interaction */
+    background-color: #ff9800; /* A deep, inviting orange, simulating candlelight */
+    border-color: #A68B79; /* Lighter border for emphasis */
+    color: #fffff; /* Brighter text color for legibility */
+    font-size: 20px; /* Bigger text for clarity */
+    border-radius: 8px; /* Consistent rounded corners */
+    margin-top: 30px; /* More space above the roll button */
+    width: 50%; /* Makes the button wider and easier to click */
+    max-width: 300px; /* Limits width on larger screens */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 #roll-btn:hover {
-    background-color: #d84315; /* A lighter, more welcoming fire-like color on hover */
+    background-color: #8A735E; /* A lighter, more welcoming fire-like color on hover */
 }
 
 #result-display {
@@ -250,21 +293,66 @@ body, html {
     }
 }
 
-/* Existing styles... */
-#clear-btn {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: #9e9e9e; /* Gray for distinction */
-    border: none;
+
+
+.total-label, .total-number {
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+}
+
+.total-container {
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    /* Avoid setting background-color or color here to allow JS to control it */
+}
+
+.total-content {
+    /* background-color: #8a2be2; /* Example background color */
+    color: #f1e4d4; /* Text color */
+    border: 3px solid #6a4f4b;
+    border-radius: 10px;
+    padding: 10px;
+    display: inline-flex; /* Use inline-flex to keep label and number in the same line */
+    align-items: center; /* Vertically center the contents */
+    gap: 5px; /* Space between the "Total" label and the number */
+}
+
+.total-label, .total-number {
+    font-size: 48px; /* Adjust as necessary for consistency */
+}
+
+/* If you want the "Total:" label to be smaller than the number */
+.total-label {
+    font-size: 36px; /* Smaller font size for the "Total:" label */
+}
+
+.total-number {
+    font-size: 48px; /* Maintain larger font size for numbers */
+   /* background-color: #8a2be2; /* Same background color for consistency */
     color: #f1e4d4;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    width: 100px; /* Adjust width as needed */
+    height: 100px; /* Adjust height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px; /* Consistent rounding */
+    border: 3px solid #6a4f4b; /* Consistent border styling */
 }
 
-#clear-btn:hover {
-    background-color: #bdbdbd; /* Lighter gray on hover */
+.total-number {
+    /* Other styling */
+    color: inherit; /* Fallback to ensure JS-set color takes precedence */
 }
-
 /* Continue with existing styles... */
