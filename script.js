@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultsContainer = document.getElementById('result-container');
     const modal = document.getElementById("modal");
     const closeBtn = document.querySelector(".close-btn");
+    const historyLog = document.getElementById('history-log');
+    const historyTitle = document.getElementById("history-title");
+    
+    let rollIndex = 1; // Declare rollIndex variable outside the click event listener
 
     diceButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -36,13 +40,17 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const prevDiceCount = selectedDice.length; // Store previous dice count
+
         resultsContainer.innerHTML = '';
         let totalValue = 0;
         let maxTotal = selectedDice.reduce((acc, dice) => acc + dice, 0);
+        let rollResults = [];
 
         selectedDice.forEach(dice => {
             const rollResult = 1 + Math.floor(Math.random() * dice);
             totalValue += rollResult;
+            rollResults.push(`D${dice}: ${rollResult}`);
 
             const resultContainer = document.createElement('div');
             resultContainer.classList.add('result-container');
@@ -61,6 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
             resultsContainer.appendChild(resultContainer);
         });
 
+        const historyItem = document.createElement('div');
+        historyItem.textContent = `Roll ${rollIndex}: ${rollResults.join(', ')}`;
+        historyLog.appendChild(historyItem);
+
+        // Check if the total number of dice rolled is greater than one
+        if (selectedDice.length + prevDiceCount > 1) {
+            historyTitle.classList.remove('hidden'); // Show the result title
+        }
+
         if (selectedDice.length > 1) {
             const totalContainer = document.createElement('div');
             totalContainer.classList.add('total-container');
@@ -69,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             totalNumber.classList.add('total-number');
             totalNumber.textContent = totalValue;
 
-          // Determine the color based on the ratio of actual total to max potential
+            // Determine the color based on the ratio of actual total to max potential
             const ratio = totalValue / maxTotal;
             let color;
             if (ratio < 0.3) {
@@ -93,12 +110,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
             resultsContainer.appendChild(totalContainer);
         }
+
+        // Show the history log and title
+        historyLog.style.display = "block";
+        historyTitle.style.display = "block";
+
+        // Check if confetti should be triggered
+        if ((selectedDice.length === 1 && totalValue === maxTotal) || 
+            (selectedDice.length > 1 && rollResults.every(result => result.endsWith(maxTotal)))) {
+            // Trigger confetti
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+
+        // Increment the roll index
+        rollIndex++;
     });
 
     document.getElementById('clear-btn').addEventListener('click', () => {
         selectedDice = [];
         diceButtons.forEach(button => button.classList.remove('dice-btn-selected'));
         resultsContainer.innerHTML = '';
+        historyLog.innerHTML = ''; // Clear history log
         modal.style.display = "none";
+        historyLog.style.display = "none"; // Hide history log on clear
+        historyTitle.style.display = "none"; // Hide result title on clear
+
+        // Reset roll index
+        rollIndex = 1;
     });
 });
