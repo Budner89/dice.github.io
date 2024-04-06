@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Essential for mobile-friendly pages -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D&D Dice Roller</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -27,10 +27,14 @@
 <!-- Roll result container -->
 <div class="outer-container">
     <div id="result-container">
-<!--         <div id="roll-text">You rolled:</div> -->
-        <div id="roll-number"></div>
+        <!-- Result title -->
+        <div id="history-title" class="hidden">Results</div>
     </div>
 </div>
+
+<!-- History log container -->
+    <div id="history-title" class="hidden">Results</div>
+    <div id="history-log" class="hidden"></div>
 
 <!-- Modal Structure -->
 <div id="modal" class="modal">
@@ -39,6 +43,10 @@
         <p>Please select at least one dice to roll.</p>
     </div>
 </div>
+
+<!-- Confetti library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti"></script>
+
 
 <script src="script.js"></script>
 </body>
