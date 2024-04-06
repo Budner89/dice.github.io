@@ -5,6 +5,7 @@
 }
 
 body, html {
+    /*background: linear-gradient(to bottom, #2b1500, #2b1500, #3d1f00, #8b4513);
     margin: 0;
     padding: 0;
     font-family: 'Merriweather', serif; /* A serif font that's modern yet retains an old-world charm */
@@ -162,10 +163,12 @@ body, html {
     align-items: center;
     background-color: #f1e4d4;
     color: #94785d;
-    border-radius: 10px;
+    border-radius: 5px; /* Rounded corners for a more polished look */
     border: 3px solid #6a4f4b;
     margin: 5px; /* Ensures spacing between boxes */
     text-align: center;
+    padding: 10px; /* Adjust padding for spacing */
+
 }
 
 .roll-number, .dice-type {
@@ -193,6 +196,7 @@ body, html {
     justify-content: center; /* Center the container's contents */
     margin: 10px; /* Margin around each result container for spacing */
 }
+
 
 
 #roll-text {
@@ -277,9 +281,16 @@ body, html {
     }
 
     .result-container {
-        flex-direction: column; /* Stack dice type and roll result vertically */
+        flex-direction: column; /* Stack the elements vertically on smaller screens */
+        align-items: center; /* Align items to the start (left) of the container */
     }
+    
+    .dice-type {
+        order: -1; /* Move the dice type label to the left */
+        margin-bottom: 5px; /* Add space between the dice type label and result box */
 
+    }
+    
     .roll-number, .dice-type {
         width: auto; /* Adjust width to fit content */
         height: auto; /* Adjust height to fit content */
@@ -361,3 +372,50 @@ body, html {
     color: inherit; /* Fallback to ensure JS-set color takes precedence */
 }
 /* Continue with existing styles... */
+
+/* Add this CSS code to your existing stylesheet */
+
+#history-log {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    border-radius: 8px;
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+    max-height: 200px; /* Limit the height of the history log */
+    display: none; /* Initially hidden */
+
+}
+
+.history-item {
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent background */
+    border-radius: 5px;
+    color: #fff; /* White text color */
+    font-size: 14px;
+}
+
+/* Style the scrollbar */
+#history-log::-webkit-scrollbar {
+    width: 8px;
+}
+
+#history-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff; /* White color */
+    background-color: #5d4037; /* Background color */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 40px;
+}
+
+.hidden {
+    display: none;
+}
+
+#history-log::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3); /* Scrollbar thumb color */
+    border-radius: 4px;
+}
+
